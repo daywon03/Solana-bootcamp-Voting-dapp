@@ -7,7 +7,7 @@ import { buffer } from 'stream/consumers';
 
 const IDL = require('../target/idl/votingdapp.json');
 //Address de notre voting smartcontract dans lib.rs
-const votingAddress = new PublicKey("coUnmi3oBUtwtd9fjeAvSsJssXh5A5xyPbhpewyzRVF"); 
+const votingAddress = new PublicKey("2S87HD2Us6gGTPhU9fPtqYhVSsxML8VRdXYMU14VPAe4"); 
 
 
 describe('votingdapp', () => {
@@ -15,10 +15,11 @@ describe('votingdapp', () => {
   let context;
   let provider;
   let votingProgram: anchor.Program<Votingdapp>;
+  anchor.setProvider(anchor.AnchorProvider.env());
 
   beforeAll(async () => {
      //Init du contexte et du provider
-   context = await startAnchor("",[{name: "votingdapp", programId: votingAddress}], []);
+   context = await startAnchor("http://localhost:8899",[{name: "votingdapp", programId: votingAddress}], []);
    provider = new BankrunProvider(context);
 
   //Init du program object en utilisant le program type Votingdapp
