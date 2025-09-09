@@ -1,7 +1,7 @@
 import * as anchor from '@coral-xyz/anchor'
 import {Program} from '@coral-xyz/anchor'
 import {Keypair, PublicKey} from '@solana/web3.js'
-import {Votingdapp} from '../target/types/votingdapp' //types Votingdapp
+import { Votingdapp } from '@project/anchor'//types Votingdapp
 import { BankrunProvider, startAnchor } from "anchor-bankrun";
 import { buffer } from 'stream/consumers';
 
@@ -14,19 +14,19 @@ describe('votingdapp', () => {
   // Configure the client to use the local cluster.
   let context;
   let provider;
-  let votingProgram: anchor.Program<Votingdapp>;
   anchor.setProvider(anchor.AnchorProvider.env());
+  let votingProgram = anchor.workspace.Votingdapp as Program<Votingdapp>;
 
   beforeAll(async () => {
-     //Init du contexte et du provider
-   context = await startAnchor("http://localhost:8899",[{name: "votingdapp", programId: votingAddress}], []);
+   /*  //Init du contexte et du provider
+   context = await startAnchor("",[{name: "votingdapp", programId: votingAddress}], []);
    provider = new BankrunProvider(context);
 
   //Init du program object en utilisant le program type Votingdapp
    votingProgram = new Program<Votingdapp>(
     IDL,
     provider,
-  );
+  );*/
   })
 
 
